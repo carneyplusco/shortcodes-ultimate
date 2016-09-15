@@ -120,9 +120,86 @@ class Su_Data {
 	}
 
 	/**
+	 * CMOA Shortcodes
+	 */
+	 public static function shortcodes( $shortcode = false ) {
+		 $shortcodes = apply_filters( 'su/data/shortcodes', array(
+ 				// heading
+				'app_store_badge' => array(
+					'name' => __( 'App Store Badge', 'shortcodes-ultimate' ),
+					'type' => 'single',
+					'group' => 'content',
+					'atts' => array(
+						'url' => array(
+							'values' => array( ),
+							'default' => 'https://itunes.apple.com/us/app/carnegie-museum-of-art/id700992890?mt=8',
+							'name' => __( 'URL', 'shortcodes-ultimate' ),
+							'desc' => __( 'App Store URL', 'shortcodes-ultimate' )
+						),
+					),
+					'desc' => __( 'App Store badge link', 'shortcodes-ultimate' ),
+					'icon' => 'apple'
+				),
+				'today_hours' => array(
+					'name' => __( 'Open Hours Message', 'shortcodes-ultimate' ),
+					'type' => 'single',
+					'group' => 'content',
+					'atts' => array(),
+					'desc' => __( 'Displays open hours message', 'shortcodes-ultimate' ),
+					'icon' => 'clock-o'
+				),
+				'email_link' => array(
+					'name' => __( 'Email Link', 'shortcodes-ultimate' ),
+					'type' => 'single',
+					'group' => 'content',
+					'atts' => array(
+						'email' => array(
+							'default' => '',
+							'name' => __( 'Email address', 'shortcodes-ultimate' ),
+							'desc' => __( '', 'shortcodes-ultimate' )
+						),
+						'text' => array(
+							'default' => '',
+							'name' => __( 'Link text', 'shortcodes-ultimate' ),
+							'desc' => __( '', 'shortcodes-ultimate' )
+						),
+						'subject' => array(
+							'default' => '',
+							'name' => __( 'Email subject', 'shortcodes-ultimate' ),
+							'desc' => __( '', 'shortcodes-ultimate' )
+						),
+					),
+					'desc' => __( 'Link to an email address', 'shortcodes-ultimate' ),
+					'icon' => 'envelope-o'
+				),
+				'accessible_text' => array(
+					'name' => __( 'Screen Reader Text', 'shortcodes-ultimate' ),
+					'type' => 'single',
+					'group' => 'content accessibility',
+					'atts' => array(
+						'display' => array(
+							'default' => '',
+							'name' => __( 'Text to display', 'shortcodes-ultimate' ),
+							'desc' => __( '', 'shortcodes-ultimate' )
+						),
+						'screen_reader' => array(
+							'default' => '',
+							'name' => __( 'Text to be read by screen reader', 'shortcodes-ultimate' ),
+							'desc' => __( '', 'shortcodes-ultimate' )
+						),
+					),
+					'desc' => __( 'Text with accessible alternative', 'shortcodes-ultimate' ),
+					'icon' => 'desktop'
+				),
+			)
+		);
+		return ( is_string( $shortcode ) ) ? $shortcodes[sanitize_text_field( $shortcode )] : $shortcodes;
+	 }
+
+	/**
 	 * Shortcodes
 	 */
-	public static function shortcodes( $shortcode = false ) {
+	public static function shortcodes_original( $shortcode = false ) {
 		$shortcodes = apply_filters( 'su/data/shortcodes', array(
 				// heading
 				'heading' => array(
